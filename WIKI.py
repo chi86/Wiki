@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/chi/pyvenv/bin/python
  
 ##   __        _____ _  _____    ##
 ##   \ \      / /_ _| |/ /_ _|   ##
@@ -17,7 +17,7 @@ __release__ = True
 import time,os,copy
 import textwrap
 import subprocess
-
+import pyperclip
 
 ### Set environment variables
 if os.environ['WIKI'] != "":
@@ -178,6 +178,10 @@ def OutputFormat(idx,val):
 
       if dat[0:2] == "##":
          print(Texti.GREEN+dat+Texti.END)
+      elif dat[0:2] == "#c": # copy to clipboard
+         print(Texti.YELLOW+dat+Texti.END)
+         cc=dat.strip("#c")
+         pyperclip.copy(cc)
       else:
          print(dat)
 
